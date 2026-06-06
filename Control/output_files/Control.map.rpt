@@ -1,0 +1,1098 @@
+Analysis & Synthesis report for Control
+Sat Jun 06 13:26:59 2026
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |Control_Motor|Encoder_Completo:ENCODER|decoder_quadratura:FSM|state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS
+ 14. Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER
+ 15. Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT
+ 16. Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR
+ 17. Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA
+ 18. Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|Complement_TWO:COMPLEMENTO_DOS
+ 19. Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA
+ 20. Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM
+ 21. Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM
+ 22. Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|nbitComparator:COMPARADOR_PWM
+ 23. Parameter Settings for Inferred Entity Instance: PI_Digital:CONTROLADOR|lpm_divide:Div0
+ 24. Parameter Settings for Inferred Entity Instance: PI_Digital:CONTROLADOR|lpm_mult:Mult0
+ 25. Parameter Settings for Inferred Entity Instance: PI_Digital:CONTROLADOR|lpm_mult:Mult1
+ 26. Parameter Settings for Inferred Entity Instance: Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0
+ 27. lpm_mult Parameter Settings by Entity Instance
+ 28. Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|nbitComparator:COMPARADOR_PWM"
+ 29. Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM"
+ 30. Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM"
+ 31. Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA"
+ 32. Port Connectivity Checks: "PI_Digital:CONTROLADOR"
+ 33. Port Connectivity Checks: "Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR"
+ 34. Port Connectivity Checks: "Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER"
+ 35. Port Connectivity Checks: "Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS"
+ 36. Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_B2"
+ 37. Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_B1"
+ 38. Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A2"
+ 39. Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A1"
+ 40. Port Connectivity Checks: "Encoder_Completo:ENCODER"
+ 41. Elapsed Time Per Partition
+ 42. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Jun 06 13:26:58 2026           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; Control                                         ;
+; Top-level Entity Name              ; Control_Motor                                   ;
+; Family                             ; Cyclone III                                     ;
+; Total logic elements               ; 1,707                                           ;
+;     Total combinational functions  ; 1,669                                           ;
+;     Dedicated logic registers      ; 204                                             ;
+; Total registers                    ; 204                                             ;
+; Total pins                         ; 16                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 4                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; Control_Motor      ; Control            ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                             ;
++-------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path          ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                ; Library ;
++-------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+---------+
+; ../Pruebas_encoder/DeltaP_a_RPM.vhd       ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/DeltaP_a_RPM.vhd       ;         ;
+; ../Pruebas_encoder/Sub_Adder.vhd          ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/Sub_Adder.vhd          ;         ;
+; ../Pruebas_encoder/REGISTER_N_BITS.vhd    ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/REGISTER_N_BITS.vhd    ;         ;
+; ../Pruebas_encoder/FullAdder.vhd          ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/FullAdder.vhd          ;         ;
+; ../Pruebas_encoder/Diferenciador.vhd      ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/Diferenciador.vhd      ;         ;
+; ../Pruebas_encoder/decoder_quadratura.vhd ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/decoder_quadratura.vhd ;         ;
+; ../Pruebas_PWM/nbitComparator.vhd         ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/nbitComparator.vhd         ;         ;
+; ../Pruebas_PWM/Mux2_1_Nine_Bit.vhd        ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/Mux2_1_Nine_Bit.vhd        ;         ;
+; ../Pruebas_PWM/Flip_Flop_D_RE.vhd         ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/Flip_Flop_D_RE.vhd         ;         ;
+; ../Pruebas_PWM/demux1_2gates.vhd          ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/demux1_2gates.vhd          ;         ;
+; ../Pruebas_PWM/contador_uni.vhd           ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/contador_uni.vhd           ;         ;
+; ../Pruebas_PWM/Complement_TWO.vhd         ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/Complement_TWO.vhd         ;         ;
+; ../Pruebas_encoder/Encoder_Completo.vhd   ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_encoder/Encoder_Completo.vhd   ;         ;
+; ../Pruebas_PWM/PWM_MOTOR_CONTROLLER.vhd   ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Pruebas_PWM/PWM_MOTOR_CONTROLLER.vhd   ;         ;
+; PI_Digital.vhd                            ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/PI_Digital.vhd                 ;         ;
+; Control_Motor.vhd                         ; yes             ; User VHDL File               ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/Control_Motor.vhd              ;         ;
+; lpm_divide.tdf                            ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/lpm_divide.tdf                            ;         ;
+; abs_divider.inc                           ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/abs_divider.inc                           ;         ;
+; sign_div_unsign.inc                       ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/sign_div_unsign.inc                       ;         ;
+; aglobal130.inc                            ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/aglobal130.inc                            ;         ;
+; db/lpm_divide_t0p.tdf                     ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/lpm_divide_t0p.tdf          ;         ;
+; db/abs_divider_1dg.tdf                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/abs_divider_1dg.tdf         ;         ;
+; db/alt_u_div_n8f.tdf                      ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/alt_u_div_n8f.tdf           ;         ;
+; db/add_sub_unc.tdf                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/add_sub_unc.tdf             ;         ;
+; db/add_sub_vnc.tdf                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/add_sub_vnc.tdf             ;         ;
+; db/lpm_abs_6v9.tdf                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/lpm_abs_6v9.tdf             ;         ;
+; db/lpm_abs_9v9.tdf                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/lpm_abs_9v9.tdf             ;         ;
+; lpm_mult.tdf                              ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/lpm_mult.tdf                              ;         ;
+; lpm_add_sub.inc                           ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/lpm_add_sub.inc                           ;         ;
+; multcore.inc                              ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/multcore.inc                              ;         ;
+; bypassff.inc                              ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/bypassff.inc                              ;         ;
+; altshift.inc                              ; yes             ; Megafunction                 ; u:/quartus/altera/quartus/libraries/megafunctions/altshift.inc                              ;         ;
+; db/mult_f8t.tdf                           ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/mult_f8t.tdf                ;         ;
+; db/mult_e8t.tdf                           ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/mult_e8t.tdf                ;         ;
+; db/lpm_divide_phm.tdf                     ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/lpm_divide_phm.tdf          ;         ;
+; db/sign_div_unsign_qlh.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/sign_div_unsign_qlh.tdf     ;         ;
+; db/alt_u_div_06f.tdf                      ; yes             ; Auto-Generated Megafunction  ; C:/Users/jleon/Downloads/DIGICORE-X_v2/DIGICORE-X_v2/Control/db/alt_u_div_06f.tdf           ;         ;
++-------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 1,707     ;
+;                                             ;           ;
+; Total combinational functions               ; 1669      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 448       ;
+;     -- 3 input functions                    ; 554       ;
+;     -- <=2 input functions                  ; 667       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 1175      ;
+;     -- arithmetic mode                      ; 494       ;
+;                                             ;           ;
+; Total registers                             ; 204       ;
+;     -- Dedicated logic registers            ; 204       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 16        ;
+; Embedded Multiplier 9-bit elements          ; 4         ;
+; Maximum fan-out node                        ; CLK~input ;
+; Maximum fan-out                             ; 204       ;
+; Total fan-out                               ; 5632      ;
+; Average fan-out                             ; 2.95      ;
++---------------------------------------------+-----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                     ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                           ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |Control_Motor                               ; 1669 (1)          ; 204 (0)      ; 0           ; 4            ; 0       ; 2         ; 16   ; 0            ; |Control_Motor                                                                                                                                                ; work         ;
+;    |Encoder_Completo:ENCODER|                ; 686 (0)           ; 136 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER                                                                                                                       ; work         ;
+;       |DeltaP_a_RPM:RPM_CALC|                ; 539 (21)          ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC                                                                                                 ; work         ;
+;          |lpm_divide:Div0|                   ; 518 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0                                                                                 ; work         ;
+;             |lpm_divide_phm:auto_generated|  ; 518 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0|lpm_divide_phm:auto_generated                                                   ; work         ;
+;                |sign_div_unsign_qlh:divider| ; 518 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0|lpm_divide_phm:auto_generated|sign_div_unsign_qlh:divider                       ; work         ;
+;                   |alt_u_div_06f:divider|    ; 518 (518)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0|lpm_divide_phm:auto_generated|sign_div_unsign_qlh:divider|alt_u_div_06f:divider ; work         ;
+;       |Diferenciador:DIF|                    ; 95 (0)            ; 80 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF                                                                                                     ; work         ;
+;          |REGISTER_N_BITS:REG_DELTA|         ; 0 (0)             ; 28 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA                                                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:10:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:10:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:11:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:11:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:12:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:12:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:13:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:13:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:14:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:14:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:15:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:15:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:16:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:16:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:17:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:17:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:18:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:18:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:19:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:19:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:20:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:20:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:21:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:21:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:22:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:22:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:23:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:23:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:24:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:24:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:25:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:25:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:26:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:26:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:27:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:27:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:28:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:28:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:29:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:29:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:30:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:30:FF                                            ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:3:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:3:FF                                             ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:4:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:4:FF                                             ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:5:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:5:FF                                             ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:6:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:6:FF                                             ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:7:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:7:FF                                             ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:8:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:8:FF                                             ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:9:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:9:FF                                             ; work         ;
+;          |REGISTER_N_BITS:REG_POS_ANT|       ; 0 (0)             ; 31 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT                                                                         ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:0:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:0:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:10:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:10:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:11:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:11:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:12:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:12:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:13:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:13:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:14:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:14:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:15:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:15:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:16:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:16:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:17:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:17:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:18:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:18:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:19:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:19:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:1:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:1:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:20:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:20:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:21:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:21:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:22:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:22:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:23:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:23:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:24:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:24:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:25:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:25:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:26:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:26:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:27:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:27:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:28:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:28:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:29:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:29:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:2:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:2:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:30:FF| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:30:FF                                          ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:3:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:3:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:4:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:4:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:5:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:5:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:6:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:6:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:7:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:7:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:8:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:8:FF                                           ; work         ;
+;             |Flip_Flop_D_RE:\GEN_BITS:9:FF|  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT|Flip_Flop_D_RE:\GEN_BITS:9:FF                                           ; work         ;
+;          |Sub_Adder:RESTADOR|                ; 57 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR                                                                                  ; work         ;
+;             |FullAdder:\GEN_FA:10:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:10:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:11:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:11:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:12:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:12:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:13:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:13:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:14:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:14:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:15:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:15:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:16:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:16:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:17:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:17:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:18:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:18:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:19:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:19:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:1:FA|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:1:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:20:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:20:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:21:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:21:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:22:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:22:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:23:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:23:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:24:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:24:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:25:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:25:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:26:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:26:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:27:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:27:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:28:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:28:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:29:FA|        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:29:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:2:FA|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:2:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:30:FA|        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:30:FA                                                          ; work         ;
+;             |FullAdder:\GEN_FA:3:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:3:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:4:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:4:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:5:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:5:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:6:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:6:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:7:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:7:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:8:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:8:FA                                                           ; work         ;
+;             |FullAdder:\GEN_FA:9:FA|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:9:FA                                                           ; work         ;
+;          |contador_uni:TIMER|                ; 38 (38)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER                                                                                  ; work         ;
+;       |Flip_Flop_D_RE:FF_A1|                 ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A1                                                                                                  ; work         ;
+;       |Flip_Flop_D_RE:FF_A2|                 ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A2                                                                                                  ; work         ;
+;       |Flip_Flop_D_RE:FF_B1|                 ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_B1                                                                                                  ; work         ;
+;       |Flip_Flop_D_RE:FF_B2|                 ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_B2                                                                                                  ; work         ;
+;       |contador_uni:CONTADOR_POS|            ; 43 (43)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS                                                                                             ; work         ;
+;       |decoder_quadratura:FSM|               ; 9 (9)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|Encoder_Completo:ENCODER|decoder_quadratura:FSM                                                                                                ; work         ;
+;    |PI_Digital:CONTROLADOR|                  ; 947 (155)         ; 49 (49)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR                                                                                                                         ; work         ;
+;       |lpm_divide:Div0|                      ; 792 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_divide:Div0                                                                                                         ; work         ;
+;          |lpm_divide_t0p:auto_generated|     ; 792 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_divide:Div0|lpm_divide_t0p:auto_generated                                                                           ; work         ;
+;             |abs_divider_1dg:divider|        ; 792 (50)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_divide:Div0|lpm_divide_t0p:auto_generated|abs_divider_1dg:divider                                                   ; work         ;
+;                |alt_u_div_n8f:divider|       ; 700 (700)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_divide:Div0|lpm_divide_t0p:auto_generated|abs_divider_1dg:divider|alt_u_div_n8f:divider                             ; work         ;
+;                |lpm_abs_9v9:my_abs_num|      ; 42 (42)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_divide:Div0|lpm_divide_t0p:auto_generated|abs_divider_1dg:divider|lpm_abs_9v9:my_abs_num                            ; work         ;
+;       |lpm_mult:Mult0|                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_mult:Mult0                                                                                                          ; work         ;
+;          |mult_f8t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_mult:Mult0|mult_f8t:auto_generated                                                                                  ; work         ;
+;       |lpm_mult:Mult1|                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_mult:Mult1                                                                                                          ; work         ;
+;          |mult_e8t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |Control_Motor|PI_Digital:CONTROLADOR|lpm_mult:Mult1|mult_e8t:auto_generated                                                                                  ; work         ;
+;    |PWM_MOTOR_CONTROLLER:PWM|                ; 35 (0)            ; 19 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM                                                                                                                       ; work         ;
+;       |Complement_TWO:COMPLEMENTO_DOS|       ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|Complement_TWO:COMPLEMENTO_DOS                                                                                        ; work         ;
+;       |Mux2_1_Nine_Bit:MUX_POTENCIA|         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|Mux2_1_Nine_Bit:MUX_POTENCIA                                                                                          ; work         ;
+;       |REGISTER_N_BITS:REGISTRO_PWM|         ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM                                                                                          ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:0:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:0:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:1:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:1:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:2:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:2:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:3:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:3:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:4:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:4:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:5:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:5:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:6:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:6:FF                                                            ; work         ;
+;          |Flip_Flop_D_RE:\GEN_BITS:7:FF|     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM|Flip_Flop_D_RE:\GEN_BITS:7:FF                                                            ; work         ;
+;       |contador_uni:CONTADOR_PWM|            ; 11 (11)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM                                                                                             ; work         ;
+;       |contador_uni:DIVISOR_FRECUENCIA|      ; 4 (4)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA                                                                                       ; work         ;
+;       |demux1_2gates:DEMUX_MOTOR|            ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|demux1_2gates:DEMUX_MOTOR                                                                                             ; work         ;
+;       |nbitComparator:COMPARADOR_PWM|        ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|nbitComparator:COMPARADOR_PWM                                                                                         ; work         ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 2           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 4           ;
+; Signed Embedded Multipliers           ; 2           ;
+; Unsigned Embedded Multipliers         ; 0           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------+
+; State Machine - |Control_Motor|Encoder_Completo:ENCODER|decoder_quadratura:FSM|state ;
++-----------+-----------+-----------+-----------+--------------------------------------+
+; Name      ; state.S10 ; state.S11 ; state.S01 ; state.S00                            ;
++-----------+-----------+-----------+-----------+--------------------------------------+
+; state.S00 ; 0         ; 0         ; 0         ; 0                                    ;
+; state.S01 ; 0         ; 0         ; 1         ; 1                                    ;
+; state.S11 ; 0         ; 1         ; 0         ; 1                                    ;
+; state.S10 ; 1         ; 0         ; 0         ; 1                                    ;
++-----------+-----------+-----------+-----------+--------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                       ;
++------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+; Register name                                                                                        ; Reason for Removal                                                                ;
++------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+; PI_Digital:CONTROLADOR|e_anterior[17..30]                                                            ; Merged with PI_Digital:CONTROLADOR|e_anterior[31]                                 ;
+; PI_Digital:CONTROLADOR|potencia_s[8]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[8]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[7]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[7]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[6]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[6]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[5]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[5]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[4]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[4]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[3]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[3]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[2]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[2]                                  ;
+; PI_Digital:CONTROLADOR|potencia_s[1]                                                                 ; Merged with PI_Digital:CONTROLADOR|u_anterior[1]                                  ;
+; PI_Digital:CONTROLADOR|u_anterior[0]                                                                 ; Merged with PI_Digital:CONTROLADOR|potencia_s[0]                                  ;
+; PI_Digital:CONTROLADOR|u_anterior[30]                                                                ; Merged with PI_Digital:CONTROLADOR|u_anterior[31]                                 ;
+; PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA|temp[0]                                     ; Merged with Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER|temp[0] ;
+; Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:0:FF|Q ; Lost fanout                                                                       ;
+; Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:1:FF|Q ; Lost fanout                                                                       ;
+; Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA|Flip_Flop_D_RE:\GEN_BITS:2:FF|Q ; Lost fanout                                                                       ;
+; Total Number of Removed Registers = 28                                                               ;                                                                                   ;
++------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 204   ;
+; Number of registers using Synchronous Clear  ; 8     ;
+; Number of registers using Synchronous Load   ; 60    ;
+; Number of registers using Asynchronous Clear ; 204   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 172   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Control_Motor|PI_Digital:CONTROLADOR|u_anterior[7]                       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Control_Motor|PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM|temp[0] ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Control_Motor|Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS|temp[5] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |Control_Motor|PI_Digital:CONTROLADOR|control                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 21    ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT ;
++----------------+-------+--------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                       ;
++----------------+-------+--------------------------------------------------------------------------------------------+
+; max_width      ; 32    ; Signed Integer                                                                             ;
++----------------+-------+--------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; n              ; 32    ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_DELTA ;
++----------------+-------+------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------------+
+; max_width      ; 32    ; Signed Integer                                                                           ;
++----------------+-------+------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|Complement_TWO:COMPLEMENTO_DOS ;
++----------------+-------+-----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------+
+; max_width      ; 9     ; Signed Integer                                                              ;
++----------------+-------+-----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA ;
++----------------+-------+------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                         ;
++----------------+-------+------------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                               ;
++----------------+-------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; max_width      ; 9     ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PWM_MOTOR_CONTROLLER:PWM|nbitComparator:COMPARADOR_PWM ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; max_width      ; 9     ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PI_Digital:CONTROLADOR|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                       ;
+; LPM_WIDTHD             ; 11             ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_t0p ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PI_Digital:CONTROLADOR|lpm_mult:Mult0 ;
++------------------------------------------------+-------------+-------------------------+
+; Parameter Name                                 ; Value       ; Type                    ;
++------------------------------------------------+-------------+-------------------------+
+; AUTO_CARRY_CHAINS                              ; ON          ; AUTO_CARRY              ;
+; IGNORE_CARRY_BUFFERS                           ; OFF         ; IGNORE_CARRY            ;
+; AUTO_CASCADE_CHAINS                            ; ON          ; AUTO_CASCADE            ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF         ; IGNORE_CASCADE          ;
+; LPM_WIDTHA                                     ; 14          ; Untyped                 ;
+; LPM_WIDTHB                                     ; 18          ; Untyped                 ;
+; LPM_WIDTHP                                     ; 32          ; Untyped                 ;
+; LPM_WIDTHR                                     ; 32          ; Untyped                 ;
+; LPM_WIDTHS                                     ; 1           ; Untyped                 ;
+; LPM_REPRESENTATION                             ; SIGNED      ; Untyped                 ;
+; LPM_PIPELINE                                   ; 0           ; Untyped                 ;
+; LATENCY                                        ; 0           ; Untyped                 ;
+; INPUT_A_IS_CONSTANT                            ; YES         ; Untyped                 ;
+; INPUT_B_IS_CONSTANT                            ; NO          ; Untyped                 ;
+; USE_EAB                                        ; OFF         ; Untyped                 ;
+; MAXIMIZE_SPEED                                 ; 6           ; Untyped                 ;
+; DEVICE_FAMILY                                  ; Cyclone III ; Untyped                 ;
+; CARRY_CHAIN                                    ; MANUAL      ; Untyped                 ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT         ; TECH_MAPPER_APEX20K     ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO        ; Untyped                 ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0           ; Untyped                 ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0           ; Untyped                 ;
+; CBXI_PARAMETER                                 ; mult_f8t    ; Untyped                 ;
+; INPUT_A_FIXED_VALUE                            ; Bx          ; Untyped                 ;
+; INPUT_B_FIXED_VALUE                            ; Bx          ; Untyped                 ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF         ; Untyped                 ;
++------------------------------------------------+-------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PI_Digital:CONTROLADOR|lpm_mult:Mult1 ;
++------------------------------------------------+-------------+-------------------------+
+; Parameter Name                                 ; Value       ; Type                    ;
++------------------------------------------------+-------------+-------------------------+
+; AUTO_CARRY_CHAINS                              ; ON          ; AUTO_CARRY              ;
+; IGNORE_CARRY_BUFFERS                           ; OFF         ; IGNORE_CARRY            ;
+; AUTO_CASCADE_CHAINS                            ; ON          ; AUTO_CASCADE            ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF         ; IGNORE_CASCADE          ;
+; LPM_WIDTHA                                     ; 13          ; Untyped                 ;
+; LPM_WIDTHB                                     ; 18          ; Untyped                 ;
+; LPM_WIDTHP                                     ; 31          ; Untyped                 ;
+; LPM_WIDTHR                                     ; 31          ; Untyped                 ;
+; LPM_WIDTHS                                     ; 1           ; Untyped                 ;
+; LPM_REPRESENTATION                             ; SIGNED      ; Untyped                 ;
+; LPM_PIPELINE                                   ; 0           ; Untyped                 ;
+; LATENCY                                        ; 0           ; Untyped                 ;
+; INPUT_A_IS_CONSTANT                            ; YES         ; Untyped                 ;
+; INPUT_B_IS_CONSTANT                            ; NO          ; Untyped                 ;
+; USE_EAB                                        ; OFF         ; Untyped                 ;
+; MAXIMIZE_SPEED                                 ; 6           ; Untyped                 ;
+; DEVICE_FAMILY                                  ; Cyclone III ; Untyped                 ;
+; CARRY_CHAIN                                    ; MANUAL      ; Untyped                 ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT         ; TECH_MAPPER_APEX20K     ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO        ; Untyped                 ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0           ; Untyped                 ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0           ; Untyped                 ;
+; CBXI_PARAMETER                                 ; mult_e8t    ; Untyped                 ;
+; INPUT_A_FIXED_VALUE                            ; Bx          ; Untyped                 ;
+; INPUT_B_FIXED_VALUE                            ; Bx          ; Untyped                 ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF         ; Untyped                 ;
++------------------------------------------------+-------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                  ;
++------------------------+----------------+-----------------------------------------------------------------------+
+; LPM_WIDTHN             ; 31             ; Untyped                                                               ;
+; LPM_WIDTHD             ; 7              ; Untyped                                                               ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                               ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                               ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                               ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                               ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                               ;
+; CBXI_PARAMETER         ; lpm_divide_phm ; Untyped                                                               ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                               ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                               ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                            ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                          ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                          ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                        ;
++------------------------+----------------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                ;
++---------------------------------------+---------------------------------------+
+; Name                                  ; Value                                 ;
++---------------------------------------+---------------------------------------+
+; Number of entity instances            ; 2                                     ;
+; Entity Instance                       ; PI_Digital:CONTROLADOR|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 14                                    ;
+;     -- LPM_WIDTHB                     ; 18                                    ;
+;     -- LPM_WIDTHP                     ; 32                                    ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                ;
+;     -- INPUT_A_IS_CONSTANT            ; YES                                   ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                    ;
+;     -- USE_EAB                        ; OFF                                   ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                  ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                    ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                    ;
+; Entity Instance                       ; PI_Digital:CONTROLADOR|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 13                                    ;
+;     -- LPM_WIDTHB                     ; 18                                    ;
+;     -- LPM_WIDTHP                     ; 31                                    ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                ;
+;     -- INPUT_A_IS_CONSTANT            ; YES                                   ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                    ;
+;     -- USE_EAB                        ; OFF                                   ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                  ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                    ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                    ;
++---------------------------------------+---------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|nbitComparator:COMPARADOR_PWM"                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; x[8] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; y[8] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; eq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; lg   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM"                              ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q[8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM" ;
++---------+-------+----------+---------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                           ;
++---------+-------+----------+---------------------------------------------------+
+; syn_clr ; Input ; Info     ; Stuck at GND                                      ;
+; ini     ; Input ; Info     ; Stuck at GND                                      ;
+; up      ; Input ; Info     ; Stuck at VCC                                      ;
+; max     ; Input ; Info     ; Stuck at VCC                                      ;
++---------+-------+----------+---------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA"                                ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; ena       ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; syn_clr   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ini       ; Input  ; Info     ; Stuck at GND                                                                        ;
+; up        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[2..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; max[3]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[0]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; counter   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "PI_Digital:CONTROLADOR"  ;
++-------------------+-------+----------+--------------+
+; Port              ; Type  ; Severity ; Details      ;
++-------------------+-------+----------+--------------+
+; referencia[31..5] ; Input ; Info     ; Stuck at VCC ;
+; referencia[4..2]  ; Input ; Info     ; Stuck at GND ;
+; referencia[1]     ; Input ; Info     ; Stuck at VCC ;
+; referencia[0]     ; Input ; Info     ; Stuck at GND ;
+; rpm[31..16]       ; Input ; Info     ; Stuck at GND ;
++-------------------+-------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR"                       ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; sel   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; r[32] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER"                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; ena         ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; syn_clr     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ini         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; up          ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[20..17] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[6..5]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[14..12] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; max[8..7]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; max[4..1]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; max[16]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; max[15]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[11]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[10]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; max[9]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max[0]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; counter     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS"                                       ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; syn_clr    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ini[30..0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ini[31]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max_tick   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_B2" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; ena  ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_B1" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; ena  ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A2" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; ena  ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A1" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; ena  ; Input ; Info     ; Stuck at VCC                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Encoder_Completo:ENCODER"                                                                        ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; posicion_continua ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sat Jun 06 13:26:55 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Control -c Control
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/deltap_a_rpm.vhd
+    Info (12022): Found design unit 1: DeltaP_a_RPM-rtl
+    Info (12023): Found entity 1: DeltaP_a_RPM
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/tb_encoder_completo.vhd
+    Info (12022): Found design unit 1: tb_Encoder_Completo-sim
+    Info (12023): Found entity 1: tb_Encoder_Completo
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/tb_diferenciador.vhd
+    Info (12022): Found design unit 1: tb_Diferenciador-sim
+    Info (12023): Found entity 1: tb_Diferenciador
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/tb_decoder_quadratura.vhd
+    Info (12022): Found design unit 1: tb_decoder_quadratura-sim
+    Info (12023): Found entity 1: tb_decoder_quadratura
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/sub_adder.vhd
+    Info (12022): Found design unit 1: Sub_Adder-structure
+    Info (12023): Found entity 1: Sub_Adder
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/register_n_bits.vhd
+    Info (12022): Found design unit 1: REGISTER_N_BITS-rtl
+    Info (12023): Found entity 1: REGISTER_N_BITS
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/fulladder.vhd
+    Info (12022): Found design unit 1: FullAdder-operationArch
+    Info (12023): Found entity 1: FullAdder
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/diferenciador.vhd
+    Info (12022): Found design unit 1: Diferenciador-rtl
+    Info (12023): Found entity 1: Diferenciador
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/decoder_quadratura.vhd
+    Info (12022): Found design unit 1: decoder_quadratura-rtl
+    Info (12023): Found entity 1: decoder_quadratura
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/test_gpio.vhd
+    Info (12022): Found design unit 1: TEST_GPIO-rtl
+    Info (12023): Found entity 1: TEST_GPIO
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/tb_pwm_motor_controller.vhd
+    Info (12022): Found design unit 1: TB_PWM_MOTOR_CONTROLLER-TB
+    Info (12023): Found entity 1: TB_PWM_MOTOR_CONTROLLER
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/tb_complement_two.vhd
+    Info (12022): Found design unit 1: TB_COMPLEMENT_TWO-TB
+    Info (12023): Found entity 1: TB_COMPLEMENT_TWO
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/nbitcomparator.vhd
+    Info (12022): Found design unit 1: nbitComparator-gateLevel
+    Info (12023): Found entity 1: nbitComparator
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/mux2_1_nine_bit.vhd
+    Info (12022): Found design unit 1: Mux2_1_Nine_Bit-functional
+    Info (12023): Found entity 1: Mux2_1_Nine_Bit
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/flip_flop_d_re.vhd
+    Info (12022): Found design unit 1: Flip_Flop_D_RE-rtl
+    Info (12023): Found entity 1: Flip_Flop_D_RE
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/demux1_2gates.vhd
+    Info (12022): Found design unit 1: demux1_2gates-gateLevel
+    Info (12023): Found entity 1: demux1_2gates
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/contador_uni.vhd
+    Info (12022): Found design unit 1: contador_uni-rtl
+    Info (12023): Found entity 1: contador_uni
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/complement_two.vhd
+    Info (12022): Found design unit 1: Complement_TWO-structure
+    Info (12023): Found entity 1: Complement_TWO
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_encoder/encoder_completo.vhd
+    Info (12022): Found design unit 1: Encoder_Completo-rtl
+    Info (12023): Found entity 1: Encoder_Completo
+Info (12021): Found 2 design units, including 1 entities, in source file /users/jleon/downloads/digicore-x_v2/digicore-x_v2/pruebas_pwm/pwm_motor_controller.vhd
+    Info (12022): Found design unit 1: PWM_MOTOR_CONTROLLER-structure
+    Info (12023): Found entity 1: PWM_MOTOR_CONTROLLER
+Info (12021): Found 2 design units, including 1 entities, in source file pi_digital.vhd
+    Info (12022): Found design unit 1: PI_Digital-rtl
+    Info (12023): Found entity 1: PI_Digital
+Info (12021): Found 2 design units, including 1 entities, in source file control_motor.vhd
+    Info (12022): Found design unit 1: Control_Motor-rtl
+    Info (12023): Found entity 1: Control_Motor
+Info (12021): Found 2 design units, including 1 entities, in source file tb_control_motor.vhd
+    Info (12022): Found design unit 1: tb_Control_Motor-sim
+    Info (12023): Found entity 1: tb_Control_Motor
+Info (12021): Found 2 design units, including 1 entities, in source file temporizador_ts.vhd
+    Info (12022): Found design unit 1: Temporizador_TS-rtl
+    Info (12023): Found entity 1: Temporizador_TS
+Info (12127): Elaborating entity "Control_Motor" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at Control_Motor.vhd(30): object "Posicion" assigned a value but never read
+Info (12128): Elaborating entity "Encoder_Completo" for hierarchy "Encoder_Completo:ENCODER"
+Info (12128): Elaborating entity "Flip_Flop_D_RE" for hierarchy "Encoder_Completo:ENCODER|Flip_Flop_D_RE:FF_A1"
+Info (12128): Elaborating entity "decoder_quadratura" for hierarchy "Encoder_Completo:ENCODER|decoder_quadratura:FSM"
+Info (12128): Elaborating entity "contador_uni" for hierarchy "Encoder_Completo:ENCODER|contador_uni:CONTADOR_POS"
+Info (12128): Elaborating entity "Diferenciador" for hierarchy "Encoder_Completo:ENCODER|Diferenciador:DIF"
+Info (12128): Elaborating entity "contador_uni" for hierarchy "Encoder_Completo:ENCODER|Diferenciador:DIF|contador_uni:TIMER"
+Info (12128): Elaborating entity "REGISTER_N_BITS" for hierarchy "Encoder_Completo:ENCODER|Diferenciador:DIF|REGISTER_N_BITS:REG_POS_ANT"
+Info (12128): Elaborating entity "Sub_Adder" for hierarchy "Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR"
+Info (12128): Elaborating entity "FullAdder" for hierarchy "Encoder_Completo:ENCODER|Diferenciador:DIF|Sub_Adder:RESTADOR|FullAdder:\GEN_FA:0:FA"
+Info (12128): Elaborating entity "DeltaP_a_RPM" for hierarchy "Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC"
+Info (12128): Elaborating entity "PI_Digital" for hierarchy "PI_Digital:CONTROLADOR"
+Info (12128): Elaborating entity "PWM_MOTOR_CONTROLLER" for hierarchy "PWM_MOTOR_CONTROLLER:PWM"
+Warning (10036): Verilog HDL or VHDL warning at PWM_MOTOR_CONTROLLER.vhd(21): object "cuenta_divisor" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at PWM_MOTOR_CONTROLLER.vhd(32): object "positivo" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at PWM_MOTOR_CONTROLLER.vhd(38): object "igual_pwm" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at PWM_MOTOR_CONTROLLER.vhd(39): object "mayor_pwm" assigned a value but never read
+Info (12128): Elaborating entity "Complement_TWO" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|Complement_TWO:COMPLEMENTO_DOS"
+Info (12128): Elaborating entity "Mux2_1_Nine_Bit" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|Mux2_1_Nine_Bit:MUX_POTENCIA"
+Info (12128): Elaborating entity "contador_uni" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|contador_uni:DIVISOR_FRECUENCIA"
+Info (12128): Elaborating entity "contador_uni" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|contador_uni:CONTADOR_PWM"
+Info (12128): Elaborating entity "REGISTER_N_BITS" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|REGISTER_N_BITS:REGISTRO_PWM"
+Info (12128): Elaborating entity "nbitComparator" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|nbitComparator:COMPARADOR_PWM"
+Info (12128): Elaborating entity "demux1_2gates" for hierarchy "PWM_MOTOR_CONTROLLER:PWM|demux1_2gates:DEMUX_MOTOR"
+Info (278001): Inferred 4 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PI_Digital:CONTROLADOR|Div0"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "PI_Digital:CONTROLADOR|Mult0"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "PI_Digital:CONTROLADOR|Mult1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|Div0"
+Info (12130): Elaborated megafunction instantiation "PI_Digital:CONTROLADOR|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "PI_Digital:CONTROLADOR|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "11"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_t0p.tdf
+    Info (12023): Found entity 1: lpm_divide_t0p
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_1dg.tdf
+    Info (12023): Found entity 1: abs_divider_1dg
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_n8f.tdf
+    Info (12023): Found entity 1: alt_u_div_n8f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_unc.tdf
+    Info (12023): Found entity 1: add_sub_unc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_vnc.tdf
+    Info (12023): Found entity 1: add_sub_vnc
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_6v9.tdf
+    Info (12023): Found entity 1: lpm_abs_6v9
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_9v9.tdf
+    Info (12023): Found entity 1: lpm_abs_9v9
+Info (12130): Elaborated megafunction instantiation "PI_Digital:CONTROLADOR|lpm_mult:Mult0"
+Info (12133): Instantiated megafunction "PI_Digital:CONTROLADOR|lpm_mult:Mult0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "14"
+    Info (12134): Parameter "LPM_WIDTHB" = "18"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_f8t.tdf
+    Info (12023): Found entity 1: mult_f8t
+Info (12130): Elaborated megafunction instantiation "PI_Digital:CONTROLADOR|lpm_mult:Mult1"
+Info (12133): Instantiated megafunction "PI_Digital:CONTROLADOR|lpm_mult:Mult1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "13"
+    Info (12134): Parameter "LPM_WIDTHB" = "18"
+    Info (12134): Parameter "LPM_WIDTHP" = "31"
+    Info (12134): Parameter "LPM_WIDTHR" = "31"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_e8t.tdf
+    Info (12023): Found entity 1: mult_e8t
+Info (12130): Elaborated megafunction instantiation "Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "Encoder_Completo:ENCODER|DeltaP_a_RPM:RPM_CALC|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "31"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_phm.tdf
+    Info (12023): Found entity 1: lpm_divide_phm
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_qlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_qlh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_06f.tdf
+    Info (12023): Found entity 1: alt_u_div_06f
+Info (13014): Ignored 31 buffer(s)
+    Info (13016): Ignored 31 CARRY_SUM buffer(s)
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 10 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]"
+    Warning (15610): No output dependent on input pin "SW[1]"
+    Warning (15610): No output dependent on input pin "SW[2]"
+    Warning (15610): No output dependent on input pin "SW[3]"
+    Warning (15610): No output dependent on input pin "SW[4]"
+    Warning (15610): No output dependent on input pin "SW[5]"
+    Warning (15610): No output dependent on input pin "SW[6]"
+    Warning (15610): No output dependent on input pin "SW[7]"
+    Warning (15610): No output dependent on input pin "SW[8]"
+    Warning (15610): No output dependent on input pin "SW[9]"
+Info (21057): Implemented 1770 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 2 output pins
+    Info (21061): Implemented 1750 logic cells
+    Info (21062): Implemented 4 DSP elements
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 4687 megabytes
+    Info: Processing ended: Sat Jun 06 13:26:59 2026
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+
